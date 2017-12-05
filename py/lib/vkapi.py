@@ -1,5 +1,6 @@
 import urllib.request
 import json
+from logger import logger
 
 
 class VkApiHandler:
@@ -9,11 +10,15 @@ class VkApiHandler:
 
     def __init__(self, token):
         token = '87581ab487581ab487581ab4a48706c0808875887581ab4de85f3e97c250d4ae2ca132b'
+        logger.debug('API Token: {}'.format(token))
         self.token = token
 
     def process_user(self, user_id, quality='photo_604'):
+        logger.info('Trying to process user with id {}...'.format(user_id))
         album_ids = self.get_album_ids(user_id)
+        logger.debug('Acquired albums: {0}.'.format(', ').join(album_ids))
         photo_urls = self.get_photo_urls(album_ids, user_id, quality)
+        logger.debug('Acquired {} photo links.'.format(len(photo_urls)))
         return photo_urls
 
     def get_album_ids(self, user_id):
