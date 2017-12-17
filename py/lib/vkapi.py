@@ -9,7 +9,8 @@ class VkApiHandler:
     get_photos_api = 'https://api.vk.com/method/photos.get?&v=5.68&access_token='
 
     def __init__(self, token):
-        token = '87581ab487581ab487581ab4a48706c0808875887581ab4de85f3e97c250d4ae2ca132b'
+
+
         logger.debug('API Token: {}'.format(token))
         self.token = token
 
